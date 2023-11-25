@@ -2,7 +2,6 @@
 import { storeToRefs } from 'pinia'
 
 const todoStore = useTodoStore()
-// const { todos } = storeToRefs(todoStore)
 </script>
 
 <template>
