@@ -7,9 +7,31 @@ export default defineNuxtConfig({
     {
       autoImports: ["defineStore",],
     },
+  ],
+  ['@vee-validate/nuxt',
+    {
+      autoImports: true,
+      // Use different names for components
+      componentNames: {
+        Form: 'VeeForm',
+        Field: 'VeeField',
+        FieldArray: 'VeeFieldArray',
+        ErrorMessage: 'VeeErrorMessage',
+      },
+    }],
+  ['@invictus.codes/nuxt-vuetify', {
+    vuetify: {
+      moduleOptions: {
+        treeshaking: true,
+        useIconCDN: true,
+        styles: true,
+        autoImport: true,
+        useVuetifyLabs: true,
+      }
+    },
 
-  ]],
-
+  }]
+  ],
   imports: {
     dirs: ["stores"],
   },
