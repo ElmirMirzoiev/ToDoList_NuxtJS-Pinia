@@ -7,10 +7,18 @@ const { todos } = storeToRefs(todoStore)
 
 <template>
     <section class="todo-list">
-        <h3>TO DO LIST</h3>
+
+        <div class="custom">
+
+            <h3>TO DO LIST</h3>
+            <v-btn class="mx-2" @click="todoStore.isFav()"></v-btn>
+
+        </div>
 
         <div class="list">
             <div v-for="todo in todoStore.sortByDate" :key="todo.id" :class="`todo-item ${todo.done && 'done'}`">
+
+
 
                 <label>
                     <input type="checkbox" v-model="todo.done">
@@ -21,7 +29,17 @@ const { todos } = storeToRefs(todoStore)
                     <input type="text" v-model="todo.content">
                 </div>
 
-                <DeleteButton :deleteTodo="todoStore.deleteTodo" :id="todo.id" />
+                <v-btn class="mx-2" size="small" @click="todoStore.deleteTodo(todo.id)">
+                    <v-icon>mdi-delete</v-icon>
+                </v-btn>
+
+                <v-btn v-if="todo.isFav" class="mx-2" size="small" color="#ff5b57" @click="todoStore.toggleFav(todo.id)">
+                    <v-icon>mdi-heart</v-icon>
+                </v-btn>
+
+                <v-btn v-else class="mx-2" size="small" @click="todoStore.toggleFav(todo.id)">
+                    <v-icon>mdi-heart</v-icon>
+                </v-btn>
 
             </div>
 
@@ -29,3 +47,9 @@ const { todos } = storeToRefs(todoStore)
 
     </section>
 </template>
+<style scoped>
+.custom {
+    display: flex;
+    flex-direction: row;
+}
+</style>

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import { v4 as uuid } from "uuid";
 
 export const useTodoStore = defineStore("todoStore", {
 
@@ -8,45 +8,63 @@ export const useTodoStore = defineStore("todoStore", {
     todos: [
       {
         id: 1,
-        content: 'Some todo',
+        title: '',
         category: 'personal',
+        title: '',
+        content: 'Some todo',
         createdAt: '5',
-        done: false
+        done: false,
+        isFav: false
       },
       {
         id: 2,
-        content: 'Some todo 2',
+        title: '',
         category: 'personal',
+        title: '',
+        content: 'Some todo 2',
         createdAt: '5',
-        done: false
+        done: false,
+        isFav: false
       }
     ],
   }),
 
   getters: {
-    sortByDate () {
-      return  this.todos.sort((a, b) => b.createdAt - a.createdAt)
-    } 
-},
+    sortByDate() {
+      return this.todos.sort((a, b) => b.createdAt - a.createdAt)
+    },
+    isFav() {
+      return this.todos.filter(t => t.isFav !== t.isFav)
+    }
+
+  },
 
   actions: {
 
-  changeTheName(name) {
-    return this.name = name
-  },
+    changeTheName(name) {
+      return this.name = name
+    },
 
-  addTodo(content, category) {
-    return this.todos.push({
-      content,
-      category,
-      createdAt: new Date().getTime(),
-      id: Math.floor(Math.random() * 10000),
-      done: false
-    })
-  },
+    addTodo(content, category, tittle) {
+      return this.todos.push({
+        tittle,
+        content,
+        category,
+        createdAt: new Date().getTime(),
+        id: uuid(),
+        done: false,
+        isFav: false
+      })
+    },
 
-  deleteTodo(id) {
-    return this.todos = this.todos.filter(t => t.id !== id)
-  }
-},
+    deleteTodo(id) {
+      return this.todos = this.todos.filter(t => t.id !== id)
+    },
+
+    toggleFav(id) {
+      const todo = this.todos.find(t => t.id === id)
+      todo.isFav = !todo.isFav
+    }
+
+  },
 });
