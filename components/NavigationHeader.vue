@@ -11,10 +11,7 @@
   </header>
 </template>
 
-<script setup>
-
-
-</script>
+<script setup></script>
 
 <style scoped>
 header {
@@ -48,7 +45,7 @@ a {
   color: #fff;
   background-color: #888;
   border-radius: 0.25rem;
-  padding: 0.1rem
+  padding: 0.3rem;
 }
 
 a:hover {

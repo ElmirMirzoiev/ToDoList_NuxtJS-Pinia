@@ -2,69 +2,75 @@ import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";
 
 export const useTodoStore = defineStore("todoStore", {
-
   state: () => ({
-    name: '',
+    name: "",
     todos: [
       {
-        id: 1,
-        title: '',
-        category: 'personal',
-        title: '',
-        content: 'Some todo',
-        createdAt: '5',
+        id: uuid(),
+        tittle: "Some todo",
+        category: "business",
+        content: "Need to learn how Vue3 works",
+        createdAt: new Date().getTime(),
         done: false,
-        isFav: false
+        isFav: false,
+        isOpen: false,
       },
       {
-        id: 2,
-        title: '',
-        category: 'personal',
-        title: '',
-        content: 'Some todo 2',
-        createdAt: '5',
+        id: uuid(),
+        tittle: "Some todo 2",
+        category: "personal",
+        content: "Need to learn how Nuxt works",
+        createdAt: new Date().getTime(),
         done: false,
-        isFav: false
-      }
+        isFav: false,
+      },
     ],
   }),
 
   getters: {
     sortByDate() {
-      return this.todos.sort((a, b) => b.createdAt - a.createdAt)
+      return this.todos.sort((a, b) => b.createdAt - a.createdAt);
     },
     isFav() {
-      return this.todos.filter(t => t.isFav !== t.isFav)
-    }
-
+      return this.todos.filter((t) => t.isFav !== t.isFav);
+    },
   },
 
   actions: {
-
     changeTheName(name) {
-      return this.name = name
+      return (this.name = name);
     },
 
     addTodo(content, category, tittle) {
-      return this.todos.push({
+        this.todos.push({
         tittle,
         content,
         category,
         createdAt: new Date().getTime(),
         id: uuid(),
         done: false,
-        isFav: false
-      })
+        isFav: false,
+        isOpen: false,
+      });
     },
 
     deleteTodo(id) {
-      return this.todos = this.todos.filter(t => t.id !== id)
+    this.todos = this.todos.filter((t) => t.id !== id);
     },
 
     toggleFav(id) {
-      const todo = this.todos.find(t => t.id === id)
-      todo.isFav = !todo.isFav
-    }
+      const todo = this.todos.find((t) => t.id === id);
+      todo.isFav = !todo.isFav;
+    },
 
+    toggleDone(id) {
+      const todo = this.todos.find((t) => t.id === id);
+      todo.done = !todo.done;
+    },
+
+    toggleOpen(id) {
+      const todo = this.todos.find((t) => t.id === id);
+      todo.open = !todo.open;
+    },
   },
 });

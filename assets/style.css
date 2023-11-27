@@ -98,7 +98,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding-top: 0.5rem;
   background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: var(--shadow);
@@ -178,6 +178,7 @@ input:checked ~ .bubble::after {
 
 .todo-list .todo-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: #fff;
   padding: 1rem;
@@ -190,14 +191,17 @@ input:checked ~ .bubble::after {
   display: block;
   margin-right: 1rem;
   cursor: pointer;
+  height: 100%;
 }
 
 .todo-item .todo-content {
+  display: flex;
+  flex-direction: column;
   flex: 1 1 0%;
-  width: fit-content;
+  width: 100%;
 }
 
-.todo-item .todo-content input {
+.todo-item .todo-content span {
   color: var(--dark);
   font-size: 1.125rem;
   width: 90%;
@@ -230,7 +234,7 @@ input:checked ~ .bubble::after {
   background-color: var(--danger);
 }
 
-.todo-item.done .todo-content input {
+.todo-item.done .todo-content span {
   text-decoration: line-through;
   color: var(--grey);
 }
