@@ -1,5 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    baseURL: '/ToDoList_NuxtJS-Pinia/',
+    buildAssetsDir: 'assets',
+  },
   devtools: { enabled: true },
   css: ["~/assets/style.css"],
   modules: [[
@@ -11,7 +15,6 @@ export default defineNuxtConfig({
   ['@vee-validate/nuxt',
     {
       autoImports: true,
-      // Use different names for components
       componentNames: {
         Form: 'VeeForm',
         Field: 'VeeField',
