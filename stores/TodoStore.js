@@ -23,6 +23,7 @@ export const useTodoStore = defineStore("todoStore", {
         createdAt: new Date().getTime(),
         done: false,
         isFav: false,
+        isOpen: false,
       },
     ],
   }),
@@ -42,7 +43,7 @@ export const useTodoStore = defineStore("todoStore", {
     },
 
     addTodo(content, category, tittle) {
-        this.todos.push({
+      this.todos.push({
         tittle,
         content,
         category,
@@ -55,7 +56,7 @@ export const useTodoStore = defineStore("todoStore", {
     },
 
     deleteTodo(id) {
-    this.todos = this.todos.filter((t) => t.id !== id);
+      this.todos = this.todos.filter((t) => t.id !== id);
     },
 
     toggleFav(id) {
@@ -70,7 +71,7 @@ export const useTodoStore = defineStore("todoStore", {
 
     toggleOpen(id) {
       const todo = this.todos.find((t) => t.id === id);
-      todo.open = !todo.open;
+      todo.isOpen = !todo.isOpen;
     },
   },
 });

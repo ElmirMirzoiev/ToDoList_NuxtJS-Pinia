@@ -1,26 +1,24 @@
 <script setup>
-
-const todoStore = useTodoStore()
-
+const todoStore = useTodoStore();
 </script>
 
 <template>
-    <section class="todo-list">
+  <section class="todo-list">
+    <h3>TO DO LIST</h3>
 
-        <h3>TO DO LIST</h3>
-
-        <div class="list">
-            <div v-for="todo in todoStore.sortByDate" :key="todo.id" :class="`todo-item ${todo.done && 'done'}`">
-                <div class="todo-content">
-                    <span>{{ todo.tittle }}</span>
-                    <span>{{ todo.content }}</span>
-                </div>
-
-            </div>
+    <div class="list">
+      <div
+        v-for="todo in todoStore.sortByDate"
+        :key="todo.id"
+        class="todo-item"
+      >
+        <div class="todo-content">
+          <span>{{ todo.tittle }}</span>
+          <span>{{ todo.content }}</span>
         </div>
-
-    </section>
+      </div>
+    </div>
+  </section>
 </template>
-
 
 <style scoped></style>
