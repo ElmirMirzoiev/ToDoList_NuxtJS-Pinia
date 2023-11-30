@@ -34,7 +34,7 @@
           <div>Personal</div>
         </label>
       </div>
-      <AddButton />
+      <input type="submit" value="Add todo" />
     </form>
   </section>
 </template>

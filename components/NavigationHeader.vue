@@ -11,7 +11,13 @@
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+const links = [
+  { to: "/", linkName: "Home" },
+  { to: "/alltasks", linkName: "All Tasks" },
+  { to: "/login", linkName: "Login" },
+];
+</script>
 
 <style scoped>
 header {
